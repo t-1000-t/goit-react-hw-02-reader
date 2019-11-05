@@ -3,21 +3,22 @@ import styles from './Controls.module.css';
 
 const controls = [styles.controls];
 const button = [styles.button];
-const buttonDisabled = [styles.button_disabled];
 
-const Controls = ({ onIncrement, onDecrement, getInitValue, items }) => (
+const Controls = ({ onCounter, getInitialIdx, items }) => (
   <section className={controls}>
     <button
       type="button"
-      className={getInitValue === 1 ? buttonDisabled : button}
-      onClick={onDecrement}
+      className={button}
+      onClick={onCounter}
+      disabled={getInitialIdx === 1}
     >
       Назад
     </button>
     <button
       type="button"
-      className={getInitValue === items.length ? buttonDisabled : button}
-      onClick={onIncrement}
+      className={button}
+      onClick={onCounter}
+      disabled={getInitialIdx === items.length}
     >
       Вперед
     </button>
