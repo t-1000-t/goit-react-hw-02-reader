@@ -10,51 +10,42 @@ const reader = [styles.reader];
 
 class Reader extends Component {
   static defaultProps = {
-    initialIdx: 0,
-    initialStep: 1,
+    currentPage: 0,
   };
 
   static propTypes = {
-    initialIdx: T.number,
-    initialStep: T.number,
+    currentPage: T.number.isRequired,
   };
 
   state = {
-    initialValue: 1,
-    initialIdx: 0,
+    currentPage: 0,
   };
 
   handleCounter = e => {
-    const { initialValue, initialIdx } = this.state;
-    const { initialStep } = this.props;
+    const { currentPage } = this.state;
     if (e.currentTarget.innerText === 'Назад') {
       this.setState({
-        initialValue: initialValue > 1 ? initialValue - initialStep : 1,
-        initialIdx: initialIdx > 0 ? initialIdx - initialStep : 0,
+        currentPage: currentPage - 1,
       });
     }
     if (e.currentTarget.innerText === 'Вперед') {
       this.setState({
-        initialValue:
-          initialValue < publications.length
-            ? initialValue + initialStep
-            : publications.length - initialStep,
-        initialIdx: initialValue > 0 ? initialIdx + 1 : 0,
+        currentPage: currentPage + 1,
       });
     }
   };
 
   render() {
-    const { initialValue, initialIdx } = this.state;
+    const { currentPage } = this.state;
     return (
       <div className={reader}>
         <Controls
           onCounter={this.handleCounter}
-          getInitialIdx={initialValue}
+          getCurrentPage={currentPage}
           items={publications}
         />
-        <Counter step={initialValue} artic={publications} />
-        <Publication items={publications[initialIdx]} />
+        <Counter numPage={currentPage} artic={publications} />
+        <Publication items={publications[currentPage]} />
       </div>
     );
   }

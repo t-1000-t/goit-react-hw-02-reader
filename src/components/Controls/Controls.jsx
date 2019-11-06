@@ -4,13 +4,13 @@ import styles from './Controls.module.css';
 const controls = [styles.controls];
 const button = [styles.button];
 
-const Controls = ({ onCounter, getInitialIdx, items }) => (
+const Controls = ({ onCounter, getCurrentPage, items }) => (
   <section className={controls}>
     <button
       type="button"
       className={button}
       onClick={onCounter}
-      disabled={getInitialIdx === 1}
+      disabled={getCurrentPage === 0}
     >
       Назад
     </button>
@@ -18,7 +18,7 @@ const Controls = ({ onCounter, getInitialIdx, items }) => (
       type="button"
       className={button}
       onClick={onCounter}
-      disabled={getInitialIdx === items.length}
+      disabled={getCurrentPage === items.length - 1}
     >
       Вперед
     </button>

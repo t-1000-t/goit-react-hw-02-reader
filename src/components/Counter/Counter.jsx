@@ -3,9 +3,9 @@ import styles from './Counter.module.css';
 
 const counter = [styles.counter];
 
-const Counter = ({ step, artic }) => (
+const Counter = ({ numPage, artic }) => (
   <p className={counter}>
-    {step}/{artic.length}
+    {numPage + 1}/{artic.length}
   </p>
 );
 
