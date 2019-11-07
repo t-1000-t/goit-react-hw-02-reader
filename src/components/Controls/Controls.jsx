@@ -10,7 +10,7 @@ const Controls = ({ onCounter, getCurrentPage, items }) => (
       type="button"
       className={button}
       onClick={onCounter}
-      disabled={getCurrentPage === 0}
+      disabled={!getCurrentPage}
     >
       Назад
     </button>

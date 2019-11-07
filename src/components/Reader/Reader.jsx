@@ -7,7 +7,6 @@ import Publication from '../Publication/Publication';
 import publications from '../../db/publications.json';
 
 const reader = [styles.reader];
-
 class Reader extends Component {
   static defaultProps = {
     currentPage: 0,
@@ -21,18 +20,13 @@ class Reader extends Component {
     currentPage: 0,
   };
 
-  handleCounter = e => {
-    const { currentPage } = this.state;
-    if (e.currentTarget.innerText === 'Назад') {
-      this.setState({
-        currentPage: currentPage - 1,
-      });
-    }
-    if (e.currentTarget.innerText === 'Вперед') {
-      this.setState({
-        currentPage: currentPage + 1,
-      });
-    }
+  handleCounter = ({ target: { innerText } }) => {
+    this.setState(prevState => ({
+      currentPage:
+        innerText === 'Назад'
+          ? prevState.currentPage - 1
+          : prevState.currentPage + 1,
+    }));
   };
 
   render() {
