@@ -18,7 +18,7 @@ const Controls = ({ onCounter, getCurrentPage, items }) => (
       type="button"
       className={button}
       onClick={onCounter}
-      disabled={getCurrentPage === items.length - 1}
+      disabled={getCurrentPage === items - 1}
     >
       Вперед
     </button>

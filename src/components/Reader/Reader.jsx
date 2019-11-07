@@ -36,9 +36,9 @@ class Reader extends Component {
         <Controls
           onCounter={this.handleCounter}
           getCurrentPage={currentPage}
-          items={publications}
+          items={publications.length}
         />
-        <Counter numPage={currentPage} artic={publications} />
+        <Counter numPage={currentPage} artic={publications.length} />
         <Publication items={publications[currentPage]} />
       </div>
     );

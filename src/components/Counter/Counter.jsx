@@ -5,7 +5,7 @@ const counter = [styles.counter];
 
 const Counter = ({ numPage, artic }) => (
   <p className={counter}>
-    {numPage + 1}/{artic.length}
+    {numPage + 1}/{artic}
   </p>
 );
 
